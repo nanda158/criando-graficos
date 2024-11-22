@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Redes Sociais</title>
-</head>
-  <body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Redes Sociais</title>
+         <link rel="stylesheet" href="style.css">
+    </head>
+<body>
     <header>
         <h1>Relatório das redes sociais</h1>
         <nav>
@@ -15,12 +16,59 @@
     </header>
     <main class="graficos-section">
         <section id="graficos-container" class="graficos-container">
-            <!-- crie os gráficos/texto aqui -->
+            <!-- crie os gráficos aqui -->
         </section>
     </main>
     <footer>
-        <p>Desenvolvido por amanda</p>
+        <p>Desenvolvido por Gui Lima</p>
+    </footer>
+</body>
+<html lang "pt-br">
+<body>
+<! -- código omitido --> 
+    <footer>
+        <p>Desenvolvido por Gui Lima</p>
     </footer>
     <script type="module" src="graficos/informacoesGlobais.js"></script>
+    <script type="module" src="graficos/quantidadeUsuarios.js"></script>
+</body>
+</html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redes Sociais</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+  </head>
+  const grafico = document.createElement('div')
+grafico.className = 'grafico'
+async function quantidadeUsuarios() {
+    const url = 'https://raw.githubusercontent.com/guilhermeomrails/api/main/numero-usuarios.json'
+    const res = await fetch(url)
+    const dados = await res.json()
+    const nomeDasRedes = Object.keys(dados)
+    const quantidadeUsuarios = Object.values(dados)
+  
+  const data = [
+    {
+      x: nomeDasRedes,
+      y: quantidadeUsuarios,
+      type: 'bar'
+    }
+  ]
+  
+  const grafico = document.createElement('div')
+  grafico.className = 'grafico'
+  document.getElementById('graficos-container').appendChild(grafico)
+  Plotly.newPlot(grafico, data)
+  
+  }
+  
+  quantidadeUsuarios()
+</footer>
+<script type="module" src="graficos/common.js"></script>
+<script type="module" src="graficos/informacoesGlobais.js"></script>
+<script type="module" src="graficos/quantidadeUsuarios.js"></script>
 </body>
 </html>
